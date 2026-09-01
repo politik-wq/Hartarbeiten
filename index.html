@@ -409,27 +409,51 @@ mark{background:linear-gradient(var(--yellow),var(--yellow)) no-repeat;backgroun
 .invtile__txt{font-size:13.5px;line-height:1.45;color:var(--graphite);margin-top:auto}
 
 /* ---------- Land investiert ---------- */
-.landgrid{margin-top:clamp(32px,4vw,54px);display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.85fr);
-  gap:16px;align-items:stretch}
-.landbig{padding:clamp(24px,2.8vw,40px)}
-.landbig__num{display:block;font-family:var(--display);font-weight:700;letter-spacing:-.04em;line-height:.95;
-  font-size:clamp(38px,6vw,82px);font-variant-numeric:tabular-nums}
-.landbig__cap{display:block;margin-top:12px;font-size:14.5px;color:var(--graphite)}
-.landbars{margin-top:clamp(24px,3vw,38px);display:flex;flex-direction:column;gap:14px}
-.lbar{display:grid;grid-template-columns:1fr;gap:7px}
-.lbar__v{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.lbar__track{height:6px;border-radius:99px;background:rgba(18,22,27,.10);overflow:hidden}
-.lbar__fill{height:100%;border-radius:99px;background:var(--red);width:0;transition:width 1.25s var(--ease) var(--fd,0s)}
-.landbig.on .lbar__fill{width:var(--w)}
-.lbar__k{font-size:13px;color:var(--graphite)}
-.landside{display:flex;flex-direction:column;gap:16px}
-.landcard{padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;justify-content:center;flex:1}
-.landcard__num{display:block;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1;
-  font-size:clamp(28px,3.4vw,46px);font-variant-numeric:tabular-nums}
-.landcard__cap{display:block;margin-top:11px;font-size:13.5px;line-height:1.45;color:var(--graphite);max-width:26ch}
-.landclaim{font-family:var(--display);font-weight:600;font-size:clamp(19px,2.1vw,28px);line-height:1.16;
+.landtop{margin-top:clamp(30px,3.6vw,50px);display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.95fr) minmax(0,1.1fr);gap:16px}
+.landcard{padding:clamp(22px,2.4vw,34px);display:flex;flex-direction:column;justify-content:center}
+.landcard__num{display:block;font-family:var(--display);font-weight:700;letter-spacing:-.038em;line-height:.98;
+  font-size:clamp(30px,3.6vw,50px);font-variant-numeric:tabular-nums}
+.landcard--big .landcard__num{font-size:clamp(36px,4.6vw,66px)}
+.landcard__cap{display:block;margin-top:12px;font-size:13.5px;line-height:1.45;color:var(--graphite);max-width:26ch}
+.landclaim{font-family:var(--display);font-weight:600;font-size:clamp(18px,1.9vw,25px);line-height:1.18;
   letter-spacing:-.026em;color:var(--ink)}
-@media (max-width:900px){.landgrid{grid-template-columns:1fr}}
+@media (max-width:1000px){.landtop{grid-template-columns:1fr 1fr}
+  .landcard--big{grid-column:1/-1}}
+@media (max-width:620px){.landtop{grid-template-columns:1fr}}
+
+/* ---------- Bereichsleiste mit App-Symbolen ---------- */
+.fields{margin-top:clamp(34px,4vw,58px)}
+.fields__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px;
+  padding-bottom:16px;border-bottom:1px solid rgba(18,22,27,.12)}
+.fields__k{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite-2)}
+.fields__head p{font-size:14px;line-height:1.45;color:var(--graphite);max-width:52ch}
+.fieldstrip{margin-top:16px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.field{position:relative;text-align:left;display:flex;flex-direction:column;gap:12px;padding:18px 16px 16px;
+  border-radius:18px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+  box-shadow:0 18px 40px -30px rgba(18,26,38,.3),inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .35s}
+.field:hover{transform:translateY(-3px);border-color:rgba(18,22,27,.28);
+  box-shadow:0 28px 54px -30px rgba(18,26,38,.4),inset 0 1px 0 rgba(255,255,255,.7)}
+.appico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;
+  background:rgba(18,22,27,.92);color:#fff;
+  box-shadow:0 8px 18px -10px rgba(18,26,38,.6),inset 0 1px 0 rgba(255,255,255,.18)}
+.appico svg{width:21px;height:21px;stroke-width:1.7}
+.field__t{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.02em;line-height:1.15}
+.field__v{font-family:var(--display);font-weight:600;font-size:15.5px;letter-spacing:-.024em;
+  font-variant-numeric:tabular-nums;color:var(--ink)}
+.field__x{font-size:12.5px;line-height:1.4;color:var(--graphite);margin-top:auto}
+.field--yellow{background:linear-gradient(150deg,rgba(255,237,0,.86),rgba(240,222,0,.62));
+  border-color:rgba(255,255,255,.6)}
+.field--yellow .field__x{color:#34320A}
+.field--yellow .appico{background:var(--ink)}
+.field--yellow .field__go{margin-top:8px;display:inline-flex;align-items:center;gap:7px;font-size:11.5px;
+  font-weight:600;color:var(--ink)}
+.field--yellow .field__go svg{width:13px;height:13px;transition:transform .3s var(--ease)}
+.field--yellow:hover .field__go svg{transform:translateX(3px)}
+@media (max-width:1180px){.fieldstrip{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.fieldstrip{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ---------- Hebel 1 : 17 ---------- */
 .lever{padding:clamp(26px,3.4vw,56px);display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
@@ -599,64 +623,6 @@ mark{background:linear-gradient(var(--yellow),var(--yellow)) no-repeat;backgroun
   </div>
 </section>
 
-<!-- ===================== THEMEN ===================== -->
-<section class="sect" id="handeln">
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <span class="eyebrow rv"><span class="slash"><i></i><i></i></span> Herbst des Handelns</span>
-        <h2 class="rv" style="--d:.06s">Die großen Punkte<br>für diesen Herbst.</h2>
-      </div>
-      <p class="lede rv" style="--d:.12s">Jetzt werden die Entscheidungen getroffen: Sechs Bereiche, in denen in diesem Herbst gearbeitet, gebaut und investiert wird.</p>
-    </div>
-
-    <div class="cards">
-      <article class="card glass rv">
-        <span class="ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M7 20v-5"/><path d="M12 20V9.5"/><path d="M17 20v-8"/><circle cx="17" cy="7.5" r="1.6"/></svg></span>
-        <h3>Arbeit &amp; Standort</h3>
-        <p>Investitionen nach Oberösterreich holen, Arbeitsplätze sichern, Verfahren beschleunigen.</p>
-        <span class="tag">Erste Adresse für Wirtschaft</span>
-      </article>
-
-      <a class="card glass glass--yellow card--link rv" style="--d:.06s" href="https://kinderlandooe.at" target="_blank" rel="noopener">
-        <span class="ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11.5C6 6.5 17.5 5.5 20.5 11.5"/><circle cx="9" cy="15" r="2"/><circle cx="16" cy="16.5" r="1.3"/><path d="M6 20.5h6"/><path d="M14.5 20.5h3"/></svg></span>
-        <h3>Kinderbetreuung</h3>
-        <p>Über 240 Bauprojekte mit über 200 Mio. € Investitionsvolumen – der Ausbau geht flächendeckend weiter.</p>
-        <span class="go">kinderlandooe.at
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
-      </a>
-
-      <article class="card glass rv" style="--d:.12s">
-        <span class="ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h3l2.5-5 3 9 2.5-4h2"/><path d="M19 6.5v7"/><path d="M15.5 10h7"/></svg></span>
-        <h3>Gesundheit &amp; Pflege</h3>
-        <p>Gesundheitsversorgung in den Regionen sichern, Spitäler modernisieren, Pflegeplätze schaffen.</p>
-        <span class="tag">Teil der 800 Mio €</span>
-      </article>
-
-      <article class="card glass rv" style="--d:.06s">
-        <span class="ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 21 12 3l6 18"/><path d="M8.2 14h7.6"/><path d="M13.6 8.5 10 13.2h3.2L11.8 17"/></svg></span>
-        <h3>Infrastruktur &amp; Energie</h3>
-        <p>Eine leistungsfähige Infrastruktur für unsere Betriebe: rund 200 Mio. € für Straße und öffentlichen Verkehr, dazu der Ausbau erneuerbarer Energie.</p>
-        <span class="tag">Ausbau läuft</span>
-      </article>
-
-      <article class="card glass rv" style="--d:.12s">
-        <span class="ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v11c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"/><path d="M12 6.5v11"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="16.5" cy="11" r="1.2"/></svg></span>
-        <h3>Bildung &amp; Technologie</h3>
-        <p>Von der Fachkraft bis zur KI-Forschung: Ausbildung, die zum Standort passt.</p>
-        <span class="tag">JKU · IT:U · FH OÖ</span>
-      </article>
-
-      <article class="card glass rv" style="--d:.18s">
-        <span class="ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="2.6"/><circle cx="5.5" cy="17" r="2.6"/><circle cx="18.5" cy="17" r="2.6"/><path d="M10 8.2 7.4 14.4"/><path d="M14 8.2 16.6 14.4"/><path d="M8.1 17h7.8"/></svg></span>
-        <h3>Zusammenhalt</h3>
-        <p>Was das Land zusammenhält, wird gestärkt – Sicherheit, Ehrenamt, Gemeinden.</p>
-        <span class="tag">Verlässliche Politik</span>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== STANDORT / KARTE ===================== -->
 <section class="sect" id="karte">
   <div class="wrap">
@@ -729,57 +695,43 @@ mark{background:linear-gradient(var(--yellow),var(--yellow)) no-repeat;backgroun
   </div>
 </section>
 
-<!-- ===================== LAND INVESTIERT ===================== -->
-<section class="sect sect--tight" id="land">
+<!-- ===================== LAND INVESTIERT + BEREICHE ===================== -->
+<section class="sect" id="land">
   <div class="wrap">
     <div class="head">
       <div>
         <span class="eyebrow rv"><span class="slash"><i></i><i></i></span> Das Land handelt</span>
         <h2 class="rv" style="--d:.06s">Unternehmen investieren.<br>Das Land investiert.</h2>
       </div>
-      <p class="lede rv" style="--d:.12s">Oberösterreich arbeitet an der Zukunft: 794 Millionen Euro fließen 2026 in zentrale Zukunftsbereiche, dazu kommen 900 Millionen Euro geplante Investitionen der Landesbeteiligungen.</p>
+      <p class="lede rv" style="--d:.12s">Oberösterreich arbeitet an der Zukunft: 794 Millionen Euro fließen 2026 in die Bereiche, in denen in diesem Herbst gearbeitet, gebaut und entschieden wird. Dazu kommen 900 Millionen Euro geplante Investitionen der Landesbeteiligungen.</p>
     </div>
 
-    <div class="landgrid">
-      <div class="landbig glass rv">
-        <span class="landbig__num"><span data-count="794" data-dec="0">0</span> Mio €</span>
-        <span class="landbig__cap">Investitionen des Landes Oberösterreich 2026</span>
-        <div class="landbars">
-          <div class="lbar" style="--w:73%;--fd:0s">
-            <span class="lbar__v">rund 200 Mio €</span>
-            <div class="lbar__track"><div class="lbar__fill"></div></div>
-            <span class="lbar__k">Straßeninfrastruktur &amp; öffentlicher Verkehr</span>
-          </div>
-          <div class="lbar" style="--w:55%;--fd:.08s">
-            <span class="lbar__v">mehr als 150 Mio €</span>
-            <div class="lbar__track"><div class="lbar__fill"></div></div>
-            <span class="lbar__k">Wohnbau</span>
-          </div>
-          <div class="lbar" style="--w:53%;--fd:.16s">
-            <span class="lbar__v">rund 146 Mio €</span>
-            <div class="lbar__track"><div class="lbar__fill"></div></div>
-            <span class="lbar__k">Wirtschaft &amp; Forschung</span>
-          </div>
-          <div class="lbar" style="--w:37%;--fd:.24s">
-            <span class="lbar__v">mehr als 100 Mio €</span>
-            <div class="lbar__track"><div class="lbar__fill"></div></div>
-            <span class="lbar__k">Krankenhäuser &amp; Schulbauten</span>
-          </div>
-          <div class="lbar" style="--w:8%;--fd:.32s">
-            <span class="lbar__v">rund 20 Mio €</span>
-            <div class="lbar__track"><div class="lbar__fill"></div></div>
-            <span class="lbar__k">Pflege</span>
-          </div>
-        </div>
+    <div class="landtop">
+      <div class="landcard landcard--big glass rv">
+        <span class="landcard__num"><span data-count="794" data-dec="0">0</span> Mio €</span>
+        <span class="landcard__cap">Investitionen des Landes Oberösterreich 2026</span>
       </div>
-      <div class="landside">
-        <div class="landcard glass rv" style="--d:.06s">
-          <span class="landcard__num"><span data-count="900" data-dec="0">0</span> Mio €</span>
-          <span class="landcard__cap">geplante Investitionen der Landesbeteiligungen 2026</span>
-        </div>
-        <div class="landcard glass glass--yellow rv" style="--d:.12s">
-          <p class="landclaim">Unternehmen investieren. Das Land investiert. Oberösterreich arbeitet an der Zukunft.</p>
-        </div>
+      <div class="landcard glass rv" style="--d:.06s">
+        <span class="landcard__num"><span data-count="900" data-dec="0">0</span> Mio €</span>
+        <span class="landcard__cap">geplante Investitionen der Landesbeteiligungen 2026</span>
+      </div>
+      <div class="landcard glass glass--yellow rv" style="--d:.12s">
+        <p class="landclaim">Unternehmen investieren. Das Land investiert. Oberösterreich arbeitet an der Zukunft.</p>
+      </div>
+    </div>
+
+    <div class="fields">
+      <div class="fields__head rv">
+        <span class="fields__k">Sechs Bereiche, in denen gearbeitet wird</span>
+        <p>Jeder Bereich mit dem Geld dahinter – so wird aus dem Herbst des Handelns ein konkreter Auftrag.</p>
+      </div>
+      <div class="fieldstrip">
+        <div class="field rv" style="--d:0.0s"><span class="appico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /></svg></span><span class="field__t">Wirtschaft &amp; Forschung</span><span class="field__v">rund 146 Mio €</span><span class="field__x">Investitionen holen, Arbeitsplätze sichern, Verfahren beschleunigen.</span></div>
+        <div class="field rv" style="--d:0.05s"><span class="appico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="3" /> <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" /> <circle cx="18" cy="5" r="3" /></svg></span><span class="field__t">Infrastruktur &amp; Energie</span><span class="field__v">rund 200 Mio €</span><span class="field__x">Eine leistungsfähige Infrastruktur für unsere Betriebe – und der Ausbau erneuerbarer Energie.</span></div>
+        <div class="field rv" style="--d:0.1s"><span class="appico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h4" /> <path d="M10 8h4" /> <path d="M14 21v-3a2 2 0 0 0-4 0v3" /> <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" /> <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" /></svg></span><span class="field__t">Wohnbau</span><span class="field__v">mehr als 150 Mio €</span><span class="field__x">Wohnen leistbar halten und Bauprojekte in den Gemeinden umsetzen.</span></div>
+        <div class="field rv" style="--d:0.15s"><span class="appico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v4" /> <path d="M14 21v-3a2 2 0 0 0-4 0v3" /> <path d="M14 9h-4" /> <path d="M18 11h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2" /> <path d="M18 21V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16" /></svg></span><span class="field__t">Krankenhäuser &amp; Schulen</span><span class="field__v">mehr als 100 Mio €</span><span class="field__x">Spitäler modernisieren, Schulen bauen, Versorgung in den Regionen sichern.</span></div>
+        <div class="field rv" style="--d:0.2s"><span class="appico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762" /></svg></span><span class="field__t">Pflege</span><span class="field__v">rund 20 Mio €</span><span class="field__x">Pflegeplätze schaffen und die Arbeit in der Pflege stärken.</span></div>
+        <a class="field field--yellow rv" style="--d:0.25s" href="https://kinderlandooe.at" target="_blank" rel="noopener"><span class="appico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5" /> <path d="M15 12h.01" /> <path d="M19.38 6.813A9 9 0 0 1 20.8 10.2a2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1" /> <path d="M9 12h.01" /></svg></span><span class="field__t">Kinderbetreuung</span><span class="field__v">über 200 Mio €</span><span class="field__x">Über 240 Bauprojekte – der Weg zum Kinderland Nr. 1 wird fortgesetzt.</span><span class="field__go">kinderlandooe.at<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span></a>
       </div>
     </div>
   </div>
